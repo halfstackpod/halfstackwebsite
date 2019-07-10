@@ -17,6 +17,7 @@
     "gatsby-remark-images": "^3.0.1",
     "gatsby-remark-relative-images": "^0.2.1",
     "gatsby-source-filesystem": "^2.0.26",
+    "gatsby-source-rss-feed": "^1.1.1",
     "gatsby-transformer-remark": "^2.3.4",
     "gatsby-transformer-sharp": "^2.1.9",
     "lodash": "^4.17.5",
@@ -30,6 +31,7 @@
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-helmet": "^5.2.0",
+    "react-pagination": "^1.0.0",
     "uuid": "^3.2.1"
   },
   "keywords": [

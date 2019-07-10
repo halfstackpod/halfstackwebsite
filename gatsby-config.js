@@ -2,9 +2,9 @@ var proxy = require('http-proxy-middleware')
 
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby + Netlify CMS Starter',
+    title: 'Halfstack Podcast',
     description:
-      'This repo contains an example business website that is built with Gatsby, and Netlify CMS.It follows the JAMstack architecture by using Git as a single source of truth, and Netlify for continuous deployment, and CDN distribution.',
+      'The podcast by wannabe fullstack developers, for wannabe fullstack developers.',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -57,6 +57,13 @@ module.exports = {
             options: {
               destinationDir: 'static',
             },
+          },
+          {
+            resolve: 'gatsby-source-rss-feed',
+            options: {
+              url: `https://www.podcast.co/feed.rss`,
+              name: `ExampleBlog`,
+            }
           },
         ],
       },

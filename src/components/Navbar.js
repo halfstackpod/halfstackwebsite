@@ -1,98 +1,50 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import github from '../img/github-icon.svg'
-import logo from '../img/logo.svg'
+import {
+  Link
+} from "gatsby";
+import React, {
+  useState
+} from "react";
+import github from "../img/github-icon.svg";
+import logo from "../img/halfstack-logo.png";
 
-const Navbar = class extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      active: false,
-      navBarActiveClass: '',
-    }
-  }
+const Navbar = () => {
+  const [active, toggleActive] = useState(false);
+  const [navBarActiveClass, setNavbarActiveClass] = useState("");
 
-  toggleHamburger = () => {
-    // toggle the active boolean in the state
-    this.setState(
-      {
-        active: !this.state.active,
-      },
-      // after state has been updated,
-      () => {
-        // set the class in state for the navbar accordingly
-        this.state.active
-          ? this.setState({
-              navBarActiveClass: 'is-active',
-            })
-          : this.setState({
-              navBarActiveClass: '',
-            })
-      }
-    )
-  }
+  const toggleHamburger = () => {
+    toggleActive(!active);
+    active ? setNavbarActiveClass("is-active") : setNavbarActiveClass("");
+  };
 
-  render() {
-    return (
-      <nav
-        className="navbar is-transparent"
-        role="navigation"
-        aria-label="main-navigation"
-      >
-        <div className="container">
-          <div className="navbar-brand">
-            <Link to="/" className="navbar-item" title="Logo">
-              <img src={logo} alt="Kaldi" style={{ width: '88px' }} />
-            </Link>
-            {/* Hamburger menu */}
-            <div
-              className={`navbar-burger burger ${this.state.navBarActiveClass}`}
-              data-target="navMenu"
-              onClick={() => this.toggleHamburger()}
-            >
+  return (
+    <React.Fragment>
+      <div className="logo-wrap" >
+        <Link to="/" className="halfstack-logo" title="Logo" >
+          <img src={logo} alt="Halfstack Logo" style={{ maxWidth: "200px" }} />
+        </Link>
+      </div>
+      <nav className="navbar is-transparent" role="navigation" aria-label="main-navigation" >
+        <div className="container" >
+          <div className="navbar-brand"> {/* Hamburger menu */}
+            <div className={`navbar-burger burger ${navBarActiveClass}`} data-target="navMenu" onClick={() => toggleHamburger()}>
               <span />
               <span />
               <span />
             </div>
           </div>
-          <div
-            id="navMenu"
-            className={`navbar-menu ${this.state.navBarActiveClass}`}
-          >
+          <div id="navMenu" className={`navbar-menu ${navBarActiveClass}`}>
             <div className="navbar-start has-text-centered">
-              <Link className="navbar-item" to="/about">
-                About
-              </Link>
-              <Link className="navbar-item" to="/products">
-                Products
-              </Link>
-              <Link className="navbar-item" to="/blog">
-                Blog
-              </Link>
-              <Link className="navbar-item" to="/contact">
-                Contact
-              </Link>
-              <Link className="navbar-item" to="/contact/examples">
-                Form Examples
-              </Link>
-            </div>
-            <div className="navbar-end has-text-centered">
-              <a
-                className="navbar-item"
-                href="https://github.com/netlify-templates/gatsby-starter-netlify-cms"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="icon">
-                  <img src={github} alt="Github" />
-                </span>
-              </a>
+              <Link className="navbar-item" to="/about" >About</Link>
+              <Link className="navbar-item" to="/projects" > Projects </Link>
+              <Link className="navbar-item" to="/episodes" >Episodes </Link>
+              <Link className="navbar-item" to="/contact">Contact</Link>
+              <Link className="navbar-item" to="/contact/examples" > Form Examples </Link>
             </div>
           </div>
         </div>
       </nav>
-    )
-  }
-}
+    </React.Fragment>
+  );
+};
 
-export default Navbar
+export default Navbar;

@@ -10,6 +10,14 @@ $primary-invert: $kaldi-red-invert
 $body-color: #333
 $black: #2b2523
 
+nav.navbar, nav.navbar .navbar-menu
+  background: #000;
+nav.navbar a, nav.navbar .navbar-burger
+  color: #FFF;
+nav .navbar-start
+  margin: 0 auto;
+
+
 .navbar .navbar-menu
   box-shadow:none !important
 
@@ -73,6 +81,17 @@ $black: #2b2523
 
 .navbar-item .icon
   color: $primary
+.navbar-item:hover
+  color: #FFF !important;
+  text-decoration: underline;
+.logo-wrap
+  background: #000;
+.halfstack-logo
+  display: block;
+  width: 200px;
+  margin: 0 auto;
+.halfstack-logo img
+  max-height: 200px;
 // Override for use of svg's from https://simpleicons.org/
 .icon svg
   width: 1.5rem
@@ -112,13 +131,13 @@ $menu-label-color: $white-ter
     vertical-align: middle
     display: inline
 
-// blog roll
-.blog-list-item.is-featured
+// episode roll
+.episode-list-item.is-featured
   background-color: #d6400033;
-.blog-list-item header
+.episode-list-item header
   display: flex;
   margin-bottom: 1em;
-.blog-list-item .featured-thumbnail
+.episode-list-item .featured-thumbnail
   flex-basis: 35%;
   margin: 0 1.5em 0 0;
 
@@ -128,13 +147,13 @@ $menu-label-color: $white-ter
 
 // responsiveness
 +tablet-only
-  .blog-list-item .featured-thumbnail
+  .episode-list-item .featured-thumbnail
     flex-basis: 50%;
 
 +mobile
-  .blog-list-item header
+  .episode-list-item header
     display: block
-  .blog-list-item .featured-thumbnail
+  .episode-list-item .featured-thumbnail
     text-align: center;
     max-width: 70%;
     margin: 0 0 1em;
