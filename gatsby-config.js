@@ -61,8 +61,8 @@ module.exports = {
           {
             resolve: 'gatsby-source-rss-feed',
             options: {
-              url: `https://www.podcast.co/feed.rss`,
-              name: `ExampleBlog`,
+              url: `https://anchor.fm/s/9905d4/podcast/rss`,
+              name: `ExamplePodcast`,
             }
           },
         ],

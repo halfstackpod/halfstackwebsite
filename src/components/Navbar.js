@@ -4,7 +4,6 @@ import {
 import React, {
   useState
 } from "react";
-import github from "../img/github-icon.svg";
 import logo from "../img/halfstack-logo.png";
 
 const Navbar = () => {
@@ -38,7 +37,7 @@ const Navbar = () => {
               <Link className="navbar-item" to="/projects" > Projects </Link>
               <Link className="navbar-item" to="/episodes" >Episodes </Link>
               <Link className="navbar-item" to="/contact">Contact</Link>
-              <Link className="navbar-item" to="/contact/examples" > Form Examples </Link>
+              {/* <Link className="navbar-item" to="/contact/examples" > Form Examples </Link> */}
             </div>
           </div>
         </div>

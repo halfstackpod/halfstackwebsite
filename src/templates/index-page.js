@@ -50,12 +50,7 @@ export const IndexPageTemplate = ({
                   <h3 className="has-text-weight-semibold is-size-2">
                     Latest episodes
                   </h3>
-                  <EpisodeRoll />
-                  <div className="column is-12 has-text-centered">
-                    <Link className="btn" to="/episodes">
-                      Read more
-                    </Link>
-                  </div>
+                  <EpisodeRoll />                  
                 </div>
               </div>
             </div>
