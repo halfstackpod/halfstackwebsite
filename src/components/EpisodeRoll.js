@@ -5,6 +5,64 @@ import { Link, graphql, StaticQuery } from 'gatsby'
 
 class EpisodeRoll extends React.Component {
   state = {currentPage: 1, postsPerPage: 4};
+
+  onPageSelectChange = (e) => {
+    e.preventDefault()
+    const pageNum = +e.target.value
+    if (pageNum) {
+      this.setState({currentPage: pageNum})
+    }
+  }
+
+  onItemsPerPageSelectChange = (e) => {
+    e.preventDefault()
+    const { data } = this.props
+    const { edges: episodes } = data.allFeedExamplePodcast
+    const itemsPerPage = +e.target.value
+    if (itemsPerPage) {
+      const maxPages = episodes && episodes.length && Math.ceil(episodes.length / itemsPerPage)
+
+      if (this.state.currentPage > maxPages) {
+        this.setState({currentPage: maxPages})
+      }
+      this.setState({ postsPerPage: itemsPerPage })
+    }
+  }
+
+  createPageSelect() {
+    const { data } = this.props    
+    const { edges: episodes } = data.allFeedExamplePodcast
+    const maxPages = episodes && episodes.length && Math.ceil(episodes.length / this.state.postsPerPage)
+    if (maxPages < 2) {
+      return;
+    }
+    const options = [];
+    for (let i = 1; i <= maxPages; i++) {
+      options.push(i)
+    }
+
+    return (
+    <div className="ep-roll-select-wrap">
+    <label for="pageSelect">Current Page</label>
+    <select id="pageSelect" onChange={this.onPageSelectChange} value={this.state.currentPage}>
+      {options.map(option => <option value={option}>{option}</option>)}
+    </select></div>)
+  }
+
+  createItemsPerPageSelect() {
+    return (
+      <div className="ep-roll-select-wrap">
+      <label for="itemsPerPage">Items Per Page</label>
+      <select id="itemsPerPage" onChange={this.onItemsPerPageSelectChange}>
+        <option value="4">4</option>
+        <option value="8">8</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+      </select>
+      </div>
+    )
+  }
+
   render() {
     const { data } = this.props
     const { edges: episodes } = data.allFeedExamplePodcast
@@ -67,7 +125,9 @@ class EpisodeRoll extends React.Component {
         )}
         {this.state.currentPage < maxPages && (
             <button className="btn paginate" onClick={() => this.setState({currentPage: this.state.currentPage += 1})}>Next</button>
-        )}        
+        )}
+        {this.createPageSelect()}
+        {this.createItemsPerPageSelect()}
       </>
     )
   }
